@@ -2,7 +2,7 @@ About
 ===
 Fresh Phrase is a Google Chrome Extension that gives you a random translation each time you open a new tab. 
 
-It'll help you stay fresh on a lanugage you have been practicing or are already conversational in. When you hit a new tab take a few seconds to learn a new phrase.
+It'll help you stay fresh on a language you have been practicing or are already conversational in. When you hit a new tab take a few seconds to learn a new phrase.
 
 Languages
 ===
@@ -35,7 +35,7 @@ var config = {
 	apiSecret: 'YOUR-PEARSON-API-SECRET'
 }
 ```
-4. Go to your Chrome extensions page Window > Extenstions or (chrome://extensions/)
+4. Go to your Chrome extensions page Window > Extensions or (chrome://extensions/)
 5. Turn on Developer Mode
 6. Load the unpacked extension folder.
 
@@ -43,5 +43,5 @@ Future Features
 ===
 
 * More languages
-* Ability to select type of phrase (business, liesure, sports, politics, etc.).
-* Ability to practice a set group of phrases for a given time period. (For those that learn better through constant repitition.)
+* Ability to select type of phrase (business, leisure, sports, politics, etc.).
+* Ability to practice a set group of phrases for a given time period. (For those that learn better through constant repetition.)
