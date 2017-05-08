@@ -2,6 +2,8 @@
 Set Languages Function
 ======================*/
 
+// Language function to add phrases to the page
+
 var setupLanguages = function() {
 
 	chrome.storage.sync.get(function(settings) {
@@ -11,6 +13,10 @@ var setupLanguages = function() {
 		==================================*/
 
 		var languageCode;
+
+		var firstSynthLanguageCode;
+
+		var secondSynthLanguageCode;
 
 		var totalEntries;
 		
@@ -32,6 +38,10 @@ var setupLanguages = function() {
 
 			languageCode = settings.languageCode;
 
+			firstSynthLanguageCode = settings.firstSynthLanguageCode;
+
+			secondSynthLanguageCode = settings.secondSynthLanguageCode;
+
 			totalEntries = settings.totalEntries;
 		
 			firstLanguage = settings.firstLanguage;
@@ -52,6 +62,10 @@ var setupLanguages = function() {
 
 		else {
 			languageCode = 'brep';
+
+			firstSynthLanguageCode = 'pt-BR';
+
+			secondSynthLanguageCode = 'en-US';
 
 			totalEntries = 13890;
 		
@@ -125,7 +139,6 @@ var setupLanguages = function() {
 				// Save response data
 
 				var response = JSON.parse(xhr.responseText);
-				console.log(response);
 				var results = response.results;
 
 				// Loop through the results until we hit a result that contains an example.
@@ -153,10 +166,14 @@ var setupLanguages = function() {
 				var firstLanguageText = document.querySelector('.first_language_text span');
 				var secondLanguageText = document.querySelector('.second_language_text span');
 
-				// Place the phrases into their containers
+				// Place the phrases into their containers and set the appropriate language codes
+				// So we know what voice to use for speech synthesis
 
 				firstLanguageText.innerHTML = firstPhrase;
+				firstLanguageText.dataset.lang = firstSynthLanguageCode;
 				secondLanguageText.innerHTML = secondPhrase;
+				secondLanguageText.dataset.lang = secondSynthLanguageCode;
+
 			}
 		};
 
@@ -169,136 +186,3 @@ var setupLanguages = function() {
 // Initialize on page load
 
 setupLanguages();
-
-/*======================
-Save Settings
-======================*/
-
-// Variables
-
-var languageSelector = document.getElementById('language_selector');
-
-var backgroundColors = {
-  english: '#2942dc',
-  portuguese: '#239e46',
-  spanish: '#0067c6',
-  chinese: '#de2910'
-};
-
-var textColors = {
-  english: '#ffffff',
-  portuguese: '#f7f409',
-  spanish: '#fff',
-  chinese: '#ffde00'
-};
-
-function save_settings() {
-
-  // Get the users language selection from the value of the select dropdown.
-  // Save the associated language data (code and total entries for the API call)
-
-  var languages = languageSelector.value;
-  var languagesArray = languages.split('_');
-  var firstLanguage = languagesArray[0];
-  var secondLanguage = languagesArray[1];
-  var languageCode;
-  var totalEntries;
-
-  if(firstLanguage === 'english' && secondLanguage === 'portuguese') {
-    languageCode = 'brep';
-    totalEntries = 13890;
-  }
-  else if(firstLanguage === 'english' && secondLanguage === 'spanish') {
-    languageCode = 'laes';
-    totalEntries = 31258;
-  }
-  else if(firstLanguage === 'portuguese' && secondLanguage === 'english') {
-    languageCode = 'brpe';
-    totalEntries = 8766;
-  }
-  else if(firstLanguage === 'spanish' && secondLanguage === 'english') {
-    languageCode = 'lase';
-    totalEntries = 23729;
-  }
-
-  // Set the language selection settings in the storage.
-
-  chrome.storage.sync.set({
-
-    firstLanguage: firstLanguage,
-    secondLanguage: secondLanguage,
-    languageCode: languageCode,
-    totalEntries: totalEntries,
-    firstLanguageBackgroundColor: backgroundColors[firstLanguage],
-    firstLanguageTextColor: textColors[firstLanguage],
-    secondLanguageBackgroundColor: backgroundColors[secondLanguage],
-    secondLanguageTextColor: textColors[secondLanguage]
-
-  }, function(settings) {
-
-    // After language settings have been set then transform the page.
-
-  	setupLanguages();
-
-    // Indicate that the options were properly saved.
-    
-    var saveButton = document.getElementById('save');
-    
-    setTimeout(function() {
-      document.querySelector('body').classList.remove('show_options');
-    }, 500);
-
-  });
-
-}
-
-document.getElementById('save').addEventListener('click', save_settings);
-
-/*======================
-Restore Options
-On page load set the options selector to the correct value.
-======================*/
-
-function restore_options() {
-  chrome.storage.sync.get(function(settings) {
-
-    // If the user has language settings then set the default selector value.
-
-    if(Object.keys(settings).length !== 0) {
-      languageSelector.value = settings.firstLanguage + '_' + settings.secondLanguage;
-    }
-    
-  });
-};
-
-document.addEventListener('DOMContentLoaded', restore_options);
-
-/*======================
-Settings Link
-======================*/
-
-var settings = document.querySelector('.settings');
-
-var settings_line = document.querySelector('.line_transform');
-
-// Settings link hover transition
-
-settings.addEventListener('mouseenter', function(){
-	settings_line.classList.add('move');
-});
-
-settings.addEventListener('mouseleave', function(){
-	settings_line.classList.remove('move');
-});
-
-// Reveal the options page
-
-settings.addEventListener('click', function(){
-	var body = document.querySelector('body');
-	if(body.classList.contains('show_options')) {
-		body.classList.remove('show_options');
-	}
-	else {
-		body.classList.add('show_options');
-	}
-});

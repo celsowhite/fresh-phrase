@@ -52,6 +52,7 @@ section.language_container {
     text-align: center;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .translation_container span {
@@ -91,6 +92,14 @@ Flags
 
 .show_options .flag_container img {
     filter: blur(3px);
+}
+
+/*=================== 
+Sound
+===================*/
+
+.play_voice {
+    cursor: pointer;
 }
 
 /*=================== 
