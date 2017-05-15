@@ -144,12 +144,11 @@ var setupLanguages = function() {
 				// Loop through the results until we hit a result that contains an example.
 
 				for(var i=0; i<results.length; i++) {
-					console.log(results[i]);
 					if(results[i].senses !== null) {
 						if(results[i].senses[0].translations !== undefined) {
 							if(results[i].senses[0].translations[0].example !== undefined) {
 								if(results[i].senses[0].translations[0].example[0].translation !== undefined) {
-									if(results[i].senses[0].translations[0].example[0].translation.text[0] !== 'xxx') {
+									if(!results[i].senses[0].translations[0].example[0].translation.text[0].includes('xx')) {
 										var translations = results[i].senses[0].translations[0].example[0];
 										var firstPhrase = translations.text;
 										var secondPhrase = translations.translation.text[0];
