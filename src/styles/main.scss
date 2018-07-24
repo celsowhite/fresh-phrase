@@ -1,0 +1,20 @@
+/*=================== 
+General
+===================*/ 
+
+@font-face {
+    font-family: 'jaapokki';
+    src: url('../assets/fonts/jaapokki-regular-webfont.woff2') format('woff2'),
+         url('../assets/fonts/jaapokki-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'jaapokki', sans-serif;
+}
