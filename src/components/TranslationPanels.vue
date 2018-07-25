@@ -2,7 +2,7 @@
 
 <template>
     
-    <section class="language_container" :href="translationCode">
+    <section class="language_container">
         <section v-for="sentence in translation" :key="sentence.code" class="language_half_container">
             <div class="translation_container first_language_text" :style="{ backgroundColor: sentence.backgroundColor }">
                 <span :style="{ color: sentence.color }">{{ sentence.phrase }}</span>
@@ -24,7 +24,6 @@
     export default {
         name: 'TranslationPanels',
         props: {
-            translationCode: String, 
             translation: Array
         }
     }    

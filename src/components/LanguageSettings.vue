@@ -25,8 +25,6 @@
             activeLanguageCode: String,
             isVisible: Boolean
         },
-        mounted: function() {
-        },
         methods: {
             saveLanguageSettings() {
                 this.$emit('changeLanguage', this.languageSelection);

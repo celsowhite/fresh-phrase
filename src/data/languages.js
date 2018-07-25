@@ -3,17 +3,17 @@
 export const languageCodes = {
     'brep': {
         'code': 'brep',
-        'originalLanguage': 'en',
-        'translatedLanguage': 'pt',
+        'originalTextLanguage': 'en',
+        'translatedTextLanguage': 'pt',
         'totalEntries': 13890
     },
     'laes': {
         'code': 'laes',
-        'originalLanguage': 'en',
-        'translatedLanguage': 'es',
+        'originalTextLanguage': 'en',
+        'translatedTextLanguage': 'es',
         'totalEntries': 31258
     }
-}
+};
 
 // Languages
 
@@ -36,4 +36,4 @@ export const languages = {
         'color': '#fffff',
         'flag': 'panama.svg'
     }
-}
+};
