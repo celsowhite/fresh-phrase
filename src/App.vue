@@ -53,8 +53,11 @@
       
     },
     mounted: function () {
+      
       // Set initial translation
+      
       this.setTranslation();
+      
     },
     methods: {
       

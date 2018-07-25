@@ -22,18 +22,21 @@ export const languages = {
         'code' : 'en',
         'backgroundColor': '#2942dc',
         'color': '#FFFFF',
-        'flag': 'usa.svg'
+        'flag': 'usa.svg',
+        'voice': 'Samantha'
     },
     'pt': {
         'code': 'pt',
         'backgroundColor': '#239e46',
         'color': '#f7f409',
-        'flag': 'brazil.svg'
+        'flag': 'brazil.svg',
+        'voice': 'Luciana'
     },
     'es': {
         'code': 'es',
         'backgroundColor': '#0067c6',
         'color': '#fffff',
-        'flag': 'panama.svg'
+        'flag': 'panama.svg',
+        'voiceName': 'Juan'
     }
 };
