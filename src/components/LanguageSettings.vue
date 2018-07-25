@@ -1,5 +1,6 @@
 <template>
     <div class="options_container" :class="{ show_options: isVisible }">
+        <div class="options_container_transparent_layer" @click="toggleLanguageSettings"></div>
         <div class="options_content">
             <h1>Select Your Language</h1> 
             <select v-model="languageSelection">
@@ -28,6 +29,9 @@
         methods: {
             saveLanguageSettings() {
                 this.$emit('changeLanguage', this.languageSelection);
+            },
+            toggleLanguageSettings(){
+                this.$emit('toggleLanguageSettings');
             }
         }
     }
@@ -59,6 +63,12 @@
     .options_container.show_options {
         opacity: 1;
         z-index: 10;
+    }
+    
+    // Content
+    
+    .options_content {
+        z-index: 13;
     }
 
     h1 {
@@ -104,6 +114,7 @@
 
     .credits {
         position: absolute;
+        z-index: 13;
         font-size: 13px;
         text-transform: uppercase;
         bottom: 0;
@@ -114,6 +125,18 @@
 
     a {
         color: #ffffff;
+    }
+    
+    // Transparent Layer
+    
+    .options_container_transparent_layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        opacity: 0;
+        width: 100%;
+        height: 100%;    
     }
     
 </style>

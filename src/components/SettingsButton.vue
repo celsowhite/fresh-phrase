@@ -42,6 +42,7 @@
     .line_transform {
         width: 30px;
         height: 2px;
+        top: -1px;
         position: relative;
         background: white;
         display: inline-block;
@@ -51,8 +52,8 @@
     .show_options .line_transform {
         margin-right: 10px;
     }
-
-    .line_transform.move {
+    
+    .settings:hover .line_transform {
         width: 40px;
     }
 

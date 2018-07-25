@@ -4,7 +4,12 @@
   <div id="app">
     <TranslationPanels :translation="translation" />
     <SettingsButton @toggleLanguageSettings="toggleLanguageSettings" />
-    <LanguageSettings :isVisible="languageSettingsVisible" :activeLanguageCode="activeLanguageCode" @changeLanguage="changeLanguage" />
+    <LanguageSettings 
+      :isVisible="languageSettingsVisible" 
+      :activeLanguageCode="activeLanguageCode" 
+      @changeLanguage="changeLanguage"
+      @toggleLanguageSettings="toggleLanguageSettings" 
+    />
   </div>
 </template>
 
