@@ -1,5 +1,5 @@
 <template>
-    <div class="options_container" :class="{ show_options: isVisible }">
+    <div class="options_container" :class="{ show_options: storeState.languageSettingsVisible }">
         <div class="options_container_transparent_layer" @click="toggleLanguageSettings"></div>
         <div class="options_content">
             <h1>Select Your Language</h1> 
@@ -7,31 +7,30 @@
                 <option value="brep">English &#8594; Portuguese</option>
                 <option value="laes">English &#8594; Spanish</option>
             </select>
-            <button id="save" @click="saveLanguageSettings">Save</button>
+            <button id="save" @click="changeLanguage">Save</button>
         </div>
         <p class="credits">Made by <a href="http://celsowhite.com" target="_blank">Celso White</a></p>
     </div>
 </template>
 
 <script>
-        
+    
+    import { store } from "../store/store.js";
+
     export default {
         name: 'LanguageSettings',
         data() {
             return {
-                languageSelection: this.activeLanguageCode
+                storeState: store.state,
+                languageSelection: store.state.activeLanguageCode
             }
         },
-        props: {
-            activeLanguageCode: String,
-            isVisible: Boolean
-        },
         methods: {
-            saveLanguageSettings() {
-                this.$emit('changeLanguage', this.languageSelection);
+            changeLanguage() {
+                store.changeLanguage(this.languageSelection);
             },
-            toggleLanguageSettings(){
-                this.$emit('toggleLanguageSettings');
+            toggleLanguageSettings() {
+                store.toggleLanguageSettings();
             }
         }
     }

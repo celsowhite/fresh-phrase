@@ -7,11 +7,13 @@
 
 <script>
     
+    import { store } from "../store/store.js";
+        
     export default {
         name: 'SettingsButton',
         methods: {
             toggleLanguageSettings(){
-                this.$emit('toggleLanguageSettings');
+                store.toggleLanguageSettings();
             }
         }
     }

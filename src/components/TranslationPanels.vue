@@ -3,7 +3,7 @@
 <template>
     
     <section class="language_container">
-        <section v-for="sentence in translation" :key="sentence.code" class="language_half_container">
+        <section v-for="sentence in storeState.translation" :key="sentence.code" class="language_half_container">
             <div class="translation_container first_language_text" :style="{ backgroundColor: sentence.backgroundColor }">
                 <span :style="{ color: sentence.color }">{{ sentence.phrase }}</span>
                 <p class="play_voice" @click="speakPhrase(sentence.phrase, sentence.voice)"><i class="far fa-volume-down"></i></p>
@@ -27,13 +27,19 @@
     window.speechSynthesis.onvoiceschanged = function() {
         voices = window.speechSynthesis.getVoices();
     }
+    
+    // Imports
+    
+    import {store} from '../store/store.js';
 
     // Component Setup
 
     export default {
         name: 'TranslationPanels',
-        props: {
-            translation: Array
+        data() {
+            return {
+                storeState: store.state
+            }
         },
         methods: {
             
