@@ -27,8 +27,12 @@ Development
 You are more than welcome to contribute to this extension. Especially if you have ideas for including more languages!
 
 1. Clone this repo.
-2. Create an app on [Pearson](http://developer.pearson.com/) and get an API key.
-3. Add your config file api.js to the root config folder. The config should be formatted as follows:
+2. Install dependencies. 
+``` bash
+npm install
+```
+3. Create an app on [Pearson](http://developer.pearson.com/) and get an API key.
+4. Add your config file api.js to the root config folder. The config should be formatted as follows:
 ```javascript
 module.exports = {
     pearson: {
@@ -37,13 +41,9 @@ module.exports = {
     }
 }
 ```
-4. Use the following bash scripts to hot reload the app locally.
+5. Serve with hot reload at localhost:8080.
 
 ``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
 npm run dev
 ```
 
@@ -52,10 +52,13 @@ Build
 
 To see the app live in a new tab then follow the below instructions:
 
-1. npm run build. This will prepare a minified production ready version of the app in the 'dist' folder.
-1. Go to your Chrome extensions page Window > Extensions or (chrome://extensions/).
-2. Turn on Developer Mode.
-3. Load the unpacked extension 'dist' folder.
+1. Create a minified production ready version of the app in the 'dist' folder.
+``` bash
+npm run build
+``` 
+2. Go to your Chrome extensions page Window > Extensions or (chrome://extensions/).
+3. Turn on Developer Mode.
+4. Load the unpacked extension 'dist' folder.
 
 Future Features
 ===
