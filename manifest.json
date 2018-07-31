@@ -1,19 +1,20 @@
 {
-  "name": "Fresh Phrase",
+  "name": "Fresh Phrase - Vue",
   "version": "1.0",
   "manifest_version": 2,
   "description": "Language translations each time you open a new chrome tab.",
   "author": "Celso White",
   "homepage_url": "http://celsowhite.com",
-  "icons": {
-    "16": "icons/icon16.png",
-    "48": "icons/icon48.png",
-    "128": "icons/icon128.png"
-  },
   "chrome_url_overrides": {
-    "newtab": "src/override/override.html"
+    "newtab": "index.html"
+  },
+  "icons": {
+    "16": "static/icons/icon16.png",
+    "48": "static/icons/icon48.png",
+    "128": "static/icons/icon128.png"
   },
   "permissions": [
     "storage"
-  ]
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }

@@ -1,6 +1,6 @@
 About
 ===
-Fresh Phrase is a Google Chrome Extension that gives you a random translation each time you open a new tab. 
+Fresh Phrase is a Google Chrome Extension built using Vue JS that gives you a random translation each time you open a new tab. 
 
 It'll help you stay fresh on a language you have been practicing or are already conversational in. When you hit a new tab take a few seconds to learn a new phrase.
 
@@ -26,18 +26,36 @@ Development
 
 You are more than welcome to contribute to this extension. Especially if you have ideas for including more languages!
 
-1. Download via this repo.
+1. Clone this repo.
 2. Create an app on [Pearson](http://developer.pearson.com/) and get an API key.
-3. Add a config.js to the src/override/js folder. The config should be formatted as follows:
+3. Add your config file api.js to the root config folder. The config should be formatted as follows:
 ```javascript
-var config = {
-	apiKey: 'YOUR-PEARSON-API-KEY',
-	apiSecret: 'YOUR-PEARSON-API-SECRET'
+module.exports = {
+    pearson: {
+        apiKey: 'YOUR-PEARSON-API-KEY',
+	    apiSecret: 'YOUR-PEARSON-API-SECRET'
+    }
 }
 ```
-4. Go to your Chrome extensions page Window > Extensions or (chrome://extensions/)
-5. Turn on Developer Mode
-6. Load the unpacked extension folder.
+4. Use the following bash scripts to hot reload the app locally.
+
+``` bash
+# install dependencies
+npm install
+
+# serve with hot reload at localhost:8080
+npm run dev
+```
+
+Build
+===
+
+To see the app live in a new tab then follow the below instructions:
+
+1. npm run build. This will prepare a minified production ready version of the app in the 'dist' folder.
+1. Go to your Chrome extensions page Window > Extensions or (chrome://extensions/).
+2. Turn on Developer Mode.
+3. Load the unpacked extension 'dist' folder.
 
 Future Features
 ===
