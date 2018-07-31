@@ -16,7 +16,7 @@ More will be added as the API's become available. Thanks to [Pearson](http://dev
 Usage
 ===
 
-1. Install in the [Chrome Web Store](http://celsowhite.com).
+1. Install in the [Chrome Web Store](https://chrome.google.com/webstore/detail/fresh-phrase/efddjajgkbcnlojnmbcnmckcmhibginc?hl=en-US).
 2. Open a new tab.
 3. Set your language translation settings.
 4. Learn!

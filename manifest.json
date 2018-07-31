@@ -1,5 +1,5 @@
 {
-  "name": "Fresh Phrase - Vue",
+  "name": "Fresh Phrase",
   "version": "1.0",
   "manifest_version": 2,
   "description": "Language translations each time you open a new chrome tab.",
@@ -13,8 +13,5 @@
     "48": "static/icons/icon48.png",
     "128": "static/icons/icon128.png"
   },
-  "permissions": [
-    "storage"
-  ],
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }
