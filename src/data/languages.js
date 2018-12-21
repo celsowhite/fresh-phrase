@@ -5,13 +5,13 @@ export const languageCodes = {
         'code': 'brep',
         'originalTextLanguage': 'en',
         'translatedTextLanguage': 'pt',
-        'totalEntries': 13890
+        'totalEntries': 8000
     },
     'laes': {
         'code': 'laes',
         'originalTextLanguage': 'en',
         'translatedTextLanguage': 'es',
-        'totalEntries': 31258
+        'totalEntries': 8000
     }
 };
 
