@@ -1,12 +1,6 @@
 // Imports
 
-import apiConfig from '../../config/api';
-import axios from 'axios';
-import TranslationPanels from '../components/TranslationPanels';
-import SettingsButton from '../components/SettingsButton';
-import LanguageSettings from '../components/LanguageSettings';
 import { languageCodes, languages } from '../data/languages';
-import { findTrueTranslation } from '../helpers/helpers';
 
 // Store
 
@@ -47,8 +41,6 @@ export const store = {
   // Set a new translation in our state using the active language code.
 
   setTranslation() {
-    let self = this;
-
     // Save Language Info
 
     const activeLanguageCodeInfo = languageCodes[this.state.activeLanguageCode];
@@ -60,34 +52,23 @@ export const store = {
       activeLanguageCodeInfo.translatedTextLanguage;
     let translatedTextInfo = languages[translatedTextLanguage];
 
-    // Create a random number between 10 and the Total amount of entries for a given language combination
+    // Dynamically set the phrases
 
-    var searchOffset =
-      Math.floor(Math.random() * activeLanguageCodeInfo.totalEntries) + 10;
+    const rand =
+      Math.floor(Math.random() * activeLanguageCodeInfo.translations.length) +
+      0;
 
-    axios
-      .get(
-        `https://api.pearson.com/v2/dictionaries/${
-          this.state.activeLanguageCode
-        }/entries?offset=${searchOffset}&limit=30&apiKey=${
-          apiConfig.pearson.apiKey
-        }&apiSecret=GhdhSUFHOG5Ukm7Q${apiConfig.pearson.secretKey}`
-      )
-      .then(function(response) {
-        const results = response.data.results;
-        findTrueTranslation(results).then(translations => {
-          // Dynamically set the phrases
-          originalTextInfo.phrase = translations.text;
-          translatedTextInfo.phrase = translations.translation.text[0];
-          // Push the active languages up to data
-          self.state.translation = [];
-          self.state.translation.push(originalTextInfo);
-          self.state.translation.push(translatedTextInfo);
-        });
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+    originalTextInfo.phrase =
+      activeLanguageCodeInfo.translations[rand][originalTextLanguage];
+    translatedTextInfo.phrase =
+      activeLanguageCodeInfo.translations[rand][translatedTextLanguage];
+
+    // Reset the current translation.
+    this.state.translation = [];
+
+    // Push the active languages up to data
+    this.state.translation.push(originalTextInfo);
+    this.state.translation.push(translatedTextInfo);
   },
 
   // Dynamically change the language
