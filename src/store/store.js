@@ -1,6 +1,7 @@
 // Imports
 
-import { languageCodes, languages } from '../data/languages';
+import portugueseData from '../data/english-portuguese.json';
+import spanishData from '../data/english-spanish.json';
 
 // Store
 
@@ -11,6 +12,38 @@ export const store = {
     activeLanguageCode: '',
     languageSettingsVisible: false,
     translation: [],
+    languages: {
+      english: {
+        backgroundColor: '#2942dc',
+        color: '#FFFFF',
+        flag: 'usa.svg',
+        voice: 'Samantha',
+      },
+      portuguese: {
+        backgroundColor: '#239e46',
+        color: '#f7f409',
+        flag: 'brazil.svg',
+        voice: 'Luciana',
+      },
+      spanish: {
+        backgroundColor: '#0067c6',
+        color: '#fffff',
+        flag: 'panama.svg',
+        voiceName: 'Juan',
+      },
+    },
+    languageCodes: {
+      brep: {
+        originalLanguage: 'english',
+        translatedLanguage: 'portuguese',
+        translations: portugueseData,
+      },
+      laes: {
+        originalLanguage: 'english',
+        translatedLanguage: 'spanish',
+        translations: spanishData,
+      },
+    },
   },
 
   // Set initial language code
@@ -41,34 +74,34 @@ export const store = {
   // Set a new translation in our state using the active language code.
 
   setTranslation() {
-    // Save Language Info
+    // Save Active Language Info
 
-    const activeLanguageCodeInfo = languageCodes[this.state.activeLanguageCode];
+    const activeLanguageInfo = this.state.languageCodes[
+      this.state.activeLanguageCode
+    ];
 
-    const originalTextLanguage = activeLanguageCodeInfo.originalTextLanguage;
-    let originalTextInfo = languages[originalTextLanguage];
+    const originalLanguage = activeLanguageInfo.originalLanguage;
 
-    const translatedTextLanguage =
-      activeLanguageCodeInfo.translatedTextLanguage;
-    let translatedTextInfo = languages[translatedTextLanguage];
+    const translatedLanguage = activeLanguageInfo.translatedLanguage;
 
-    // Dynamically set the phrases
+    // Get a random index so we can select a translation from our list.
 
     const rand =
-      Math.floor(Math.random() * activeLanguageCodeInfo.translations.length) +
-      0;
+      Math.floor(Math.random() * activeLanguageInfo.translations.length) + 0;
 
-    originalTextInfo.phrase =
-      activeLanguageCodeInfo.translations[rand][originalTextLanguage];
-    translatedTextInfo.phrase =
-      activeLanguageCodeInfo.translations[rand][translatedTextLanguage];
+    // Set the new translation in state.
 
-    // Reset the current translation.
-    this.state.translation = [];
-
-    // Push the active languages up to data
-    this.state.translation.push(originalTextInfo);
-    this.state.translation.push(translatedTextInfo);
+    const newTranslation = [
+      {
+        language: activeLanguageInfo.originalLanguage,
+        text: activeLanguageInfo.translations[rand][originalLanguage],
+      },
+      {
+        language: activeLanguageInfo.translatedLanguage,
+        text: activeLanguageInfo.translations[rand][translatedLanguage],
+      },
+    ];
+    this.state.translation = newTranslation;
   },
 
   // Dynamically change the language
