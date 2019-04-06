@@ -53,7 +53,7 @@ export const store = {
     // If none exists then set the default as our first available language code.
 
     if (!localStorage.getItem('freshPhraseLanguage')) {
-      this.setLanguageCode(Object.keys(languageCodes)[0]);
+      this.setLanguageCode(Object.keys(this.state.languageCodes)[0]);
     } else {
       this.setLanguageCode(localStorage.getItem('freshPhraseLanguage'));
     }
